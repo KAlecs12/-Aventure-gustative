@@ -6,11 +6,18 @@
 
 {# Ici vous mettez vos codes HTML et balises Twig au besoin #}
 {% block body %}
+    <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+            <div class="container-fluid">
+                <a class="text-xl text-black" href="#">Navbar</a>
+            </div>
+        </div>
+    </nav>
+
     <h1>Mon super titre H1</h1>
 
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <h2>Welcome {{ app.user.firstName }}</h2>
-        <a href="{{path('download_file')}}" target="_blank">Download file</a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
             <li>
                 <a class="dropdown-item" href="{{ path('app_logout') }}">Log Out</a>

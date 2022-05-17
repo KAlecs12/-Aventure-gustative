@@ -45,7 +45,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $facturation;
+    private $pseudo;
+
 
     public function getId(): ?int
     {
@@ -157,15 +158,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getFacturation(): ?string
+    public function getPseudo(): ?string
     {
-        return $this->facturation;
+        return $this->pseudo;
     }
 
-    public function setFacturation(?string $facturation): self
+    public function setPseudo(string $pseudo): self
     {
-        $this->facturation = $facturation;
+        $this->pseudo = $pseudo;
 
         return $this;
     }
+
+
 }

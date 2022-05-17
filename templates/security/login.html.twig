@@ -14,13 +14,14 @@
                                     <div class="text-center">
                                         <img
                                                 class="mx-auto w-48"
-                                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                                src="{{ asset('imgs/logo.png')}}"
                                                 alt="logo"
                                         />
                                         <h4 class="text-xl font-semibold mt-1 mb-12 pb-1">We are The Lotus Team</h4>
                                     </div>
                                     <form method="post" >
                                         <p class="mb-4">Please login to your account</p>
+
                                         {% if error %}
                                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                                         {% endif %}

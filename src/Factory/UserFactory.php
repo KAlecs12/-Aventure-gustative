@@ -41,6 +41,7 @@ final class UserFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
+            'pseudo' => self::faker()->userName(),
             'email' => self::faker()->email(),
             'firstName' => self::faker()->firstName(),
             'plainPassword' => 'tada',

@@ -22,14 +22,4 @@ class HomeController extends AbstractController
         ]);
 
     }
-
-    #[Route('/pdf/', name: 'download_file')]
-    public function pdfAction(KernelInterface $kernelInterface)
-    {
-        $facturation = $this->getUser()->getFacturation();
-
-        $projectRoot = $kernelInterface->getProjectDir();
-        return $this->file( $projectRoot.$facturation, null, ResponseHeaderBag::DISPOSITION_INLINE);
-
-    }
 }
