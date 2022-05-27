@@ -8,11 +8,25 @@
 {% block body %}
     <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
         <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
-            <div class="container-fluid">
-                <a class="text-xl text-black" href="#">Navbar</a>
+            <div class="container-fluid flex justify-between items-center border-b-2 border-gray-100 md:justify-start md:space-x-64">
+                <a class="text-xl text-black" href="#">Accueil</a>
+                <a class="text-xl text-black" href="#">Recettes</a>
+                <a class="text-xl text-black" href="#">A propos</a>
+                <a class="text-xl text-black" href="#">Contact</a>
+                <a class="text-xl text-black" href="#">Connexion</a>
             </div>
         </div>
     </nav>
+
+    <div class="allign-center pt-8">
+        <img
+                class="mx-auto w-48"
+                src="{{ asset('imgs/logo.png')}}"
+                alt="logo"
+        />
+        <h1 class="text-center text-xl font-medium">AVENTURES GUSTATIVES</h1>
+    </div>
+
 
     <h1>Mon super titre H1</h1>
 
