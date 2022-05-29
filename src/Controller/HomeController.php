@@ -27,10 +27,16 @@ class HomeController extends AbstractController
             ->getRepository(Article::class)
             ->findAll();
 
+        $lastarticle = $entityManager
+            ->getRepository(Article::class)
+            ->findBy(array(), array('id' => 'desc'),1,0);
+
+
 
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
             'articles' => $articles,
+            'lastarticle' => $lastarticle,
         ]);
 
     }
@@ -62,6 +68,11 @@ class HomeController extends AbstractController
     #[Route('/recettes/{id}/details', name: 'app_recettes_details')]
     public function recettesDetails($id, Request $request, EntityManagerInterface $entityManager): Response
     {
+        // Les trois dernieres recettes
+        $threelast = $entityManager
+            ->getRepository(Article::class)
+            ->findBy(array(), array('id' => 'desc'),3,0);
+
         // On recupere tous les commentaires de l'article
         $commentaire = $entityManager
             ->getRepository(Commentaires::class)
@@ -92,7 +103,8 @@ class HomeController extends AbstractController
         return $this->renderForm('recettes/recette_details.html.twig', [
             'article' => $articles,
             'form' => $form,
-            'commentaire' => $commentaire
+            'commentaire' => $commentaire,
+            'threelast' => $threelast
         ]);
 
     }

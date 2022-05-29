@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -132,4 +133,33 @@ class Article
         return $this;
     }
 
+        /**
+     * @return Collection<int, Commentaires>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaires(Commentaires $commentaires): self
+    {
+        if (!$this->commentaires->contains($commentaires)) {
+            $this->commentaires[] = $commentaires;
+            $commentaires->setIdArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaires(Commentaires $commentaires): self
+    {
+        if ($this->commentaires->removeElement($commentaires)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaires->setIdArticle($this)) {
+                $commentaires->setIdArticle(null);
+            }
+        }
+
+        return $this;
+    }
 }

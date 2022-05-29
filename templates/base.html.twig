@@ -21,7 +21,7 @@
             <a class="text-xl text-black" href="{{ path('app_home') }}">Accueil</a>
             <a class="text-xl text-black" href={{ path('app_recettes') }}>Recettes</a>
             <a class="text-xl text-black" href={{ path('app_about') }}>A propos</a>
-            <a class="text-xl text-black" href="#">Contact</a>
+            <a class="text-xl text-black" href="{{ path('app_contact') }}">Contact</a>
 
             {% if is_granted('ROLE_USER') %}
                 <a class="text-xl text-black" href="{{ path('app_logout') }}">Déconnexion</a>
@@ -52,7 +52,7 @@
         <div class="container-fluid flex justify-evenly border-b-2 border-gray-100">
 
             <div>
-                <p class="text-gray-400 fa fa-copyright"> 2022 par AVENTURES GUSTATIVES</p>
+                <p class="text-gray-400 fa fa-copyright tracking-widest"> 2022 par AVENTURES GUSTATIVES</p>
             </div>
 
             <div class="text-2xl">
