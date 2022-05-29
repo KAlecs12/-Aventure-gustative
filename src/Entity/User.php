@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -52,6 +53,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $lastName;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="idUser")
+     */
+    private $article;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="idUser")
+     */
+    private $commentaires;
 
     public function getId(): ?int
     {
@@ -187,5 +197,64 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticle(): Collection
+    {
+        return $this->article;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->article->contains($article)) {
+            $this->article[] = $article;
+            $article->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->article->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getIdUser() === $this) {
+                $article->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaires>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaires(Commentaires $commentaires): self
+    {
+        if (!$this->commentaires->contains($commentaires)) {
+            $this->commentaires[] = $commentaires;
+            $commentaires->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaires(Commentaires $commentaires): self
+    {
+        if ($this->commentaires->removeElement($commentaires)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaires->getIdUser() === $this) {
+                $commentaires->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

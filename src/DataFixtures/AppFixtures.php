@@ -24,11 +24,19 @@ class AppFixtures extends Fixture
         UserFactory::createMany(10);
 
         ArticleFactory::createOne([
-            'title' => 'Test',
-            'autheur' => 'admin',
+            'title' => 'Diirrnj huedhuze zudhzed izedi',
+            'categorie' => 'Plat',
+            'description' => 'Eijnerfeuh ifiuefiefiufuifnvehufn iofjerifenfioe efeozjfoei',
             'creationDate' => new \DateTimeImmutable(),
-            'description' => 'wooooooooooooooooooooow incroyable'
+            'imageFile' => 'pathfile',
+            'idUser' =>  UserFactory::random()
         ]);
+
+        ArticleFactory::createMany(5, function (){
+            return [
+                'idUser' =>  UserFactory::random()
+            ];
+        });
 
         $manager->flush();
     }

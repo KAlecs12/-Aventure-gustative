@@ -6,3 +6,8 @@ body {
     background-color: white;
 }
 
+#comment textarea {
+    vertical-align: text-top;
+    min-width: 500px;
+    max-width: 500px;
+}
