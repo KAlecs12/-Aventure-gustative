@@ -22,7 +22,15 @@
             <a class="text-xl text-black" href={{ path('app_recettes') }}>Recettes</a>
             <a class="text-xl text-black" href={{ path('app_about') }}>A propos</a>
             <a class="text-xl text-black" href="#">Contact</a>
-            <a class="text-xl text-black" href="#">Connexion</a>
+
+            {% if is_granted('ROLE_USER') %}
+                <a class="text-xl text-black" href="{{ path('app_logout') }}">Déconnexion</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="text-xl text-black" href="{{ path('app_admin') }}">Administration</a>
+                {% endif %}
+            {% else %}
+                <a class="text-xl text-black" href="{{ path('app_login') }}">Connexion</a>
+            {% endif %}
         </div>
     </nav>
 
@@ -32,7 +40,7 @@
                 src="{{ asset('imgs/logo.png')}}"
                 alt="logo"
         />
-        <h1 class="text-center text-xl font-light mt-3">AVENTURES GUSTATIVES</h1>
+        <h1 class="text-center text-xl mt-3 tracking-widest">AVENTURES GUSTATIVES</h1>
     </div>
 
     <hr class="my-10">

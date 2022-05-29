@@ -62,8 +62,13 @@ class HomeController extends AbstractController
     #[Route('/recettes/{id}/details', name: 'app_recettes_details')]
     public function recettesDetails($id, Request $request, EntityManagerInterface $entityManager): Response
     {
+        // On recupere tous les commentaires de l'article
+        $commentaire = $entityManager
+            ->getRepository(Commentaires::class)
+            ->findBy(array('idArticle' => $id));
 
 
+        // On envoie le formulaire pour écrire un commentaire
             $commentaires = new Commentaires();
             $form = $this->createForm(CommentaireType::class, $commentaires);
             $form->handleRequest($request);
@@ -86,7 +91,8 @@ class HomeController extends AbstractController
         }
         return $this->renderForm('recettes/recette_details.html.twig', [
             'article' => $articles,
-            'form' => $form
+            'form' => $form,
+            'commentaire' => $commentaire
         ]);
 
     }
