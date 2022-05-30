@@ -44,8 +44,9 @@ final class ArticleFactory extends ModelFactory
             'categorie' => self::faker()->title(),
             'description' => self::faker()->text(),
             'creationDate' => self::faker()->dateTime(),
-            'imageFile' => 'pathfile',
+            'imageFile' => 'imgs/bruschetta.jpg',
             'idUser' =>  UserFactory::random(),
+            'deleted' => false
         ];
     }
 

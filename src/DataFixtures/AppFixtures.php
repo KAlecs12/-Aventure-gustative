@@ -21,20 +21,26 @@ class AppFixtures extends Fixture
             'roles' => ['ROLE_USER'],
             'pseudo' => 'alecsadmin'
         ]);
+        UserFactory::createOne([
+            'email' => 'alexblabla@gmail.com',
+            'roles' => ['ROLE_AUTEUR'],
+            'pseudo' => 'Alexblabla'
+        ]);
         UserFactory::createMany(10);
 
         ArticleFactory::createOne([
-            'title' => 'Diirrnj huedhuze zudhzed izedi',
+            'title' => 'Nouveau plat',
             'categorie' => 'Plat',
             'description' => 'Eijnerfeuh ifiuefiefiufuifnvehufn iofjerifenfioe efeozjfoei',
             'creationDate' => new \DateTimeImmutable(),
-            'imageFile' => 'pathfile',
-            'idUser' =>  UserFactory::random()
+            'imageFile' => 'imgs/cake.jpg',
+            'idUser' =>  UserFactory::random(),
+            'deleted' => false
         ]);
 
-        ArticleFactory::createMany(5, function (){
+        ArticleFactory::createMany(20, function (){
             return [
-                'idUser' =>  UserFactory::random()
+                'idUser' =>  UserFactory::random(),
             ];
         });
 
