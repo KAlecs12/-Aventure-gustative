@@ -72,6 +72,7 @@ class HomeController extends AbstractController
             ->getRepository(Article::class)
             ->find($id);
 
+
         // Les trois dernieres recettes
         $threelast = $entityManager
             ->getRepository(Article::class)
@@ -101,13 +102,30 @@ class HomeController extends AbstractController
                 return $this->redirectToRoute('app_recettes_details', array('id' => $id));
             }
         }
+
+        $user = $this->getUser();
         return $this->renderForm('recettes/recette_details.html.twig', [
             'article' => $articles,
             'form' => $form,
             'commentaire' => $commentaire,
-            'threelast' => $threelast
+            'threelast' => $threelast,
+            'user' => $user
         ]);
 
+    }
+
+    #[Route('{id}/deletecommentaire/{commentid}', name: 'app_deletecomment')]
+    public function deletecomment($id, $commentid,EntityManagerInterface $entityManager): Response
+    {
+
+        $commentaire = $entityManager
+            ->getRepository(Commentaires::class)
+            ->find($commentid);
+
+        $commentaire->setDeleted(1);
+        $entityManager->persist($commentaire);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_recettes_details', array('id' => $id));
     }
 
 }

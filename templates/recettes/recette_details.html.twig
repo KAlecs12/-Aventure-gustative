@@ -10,8 +10,14 @@
     <!-- Section posts -->
     <div class="w-1/3 m-auto">
         <div class="rounded border w-full bg-white mx-3 md:mx-0 lg:mx-0">
-            <a style="background-color: #B2996B; color: white; padding: 7px" href="/auteur/update/{{ article.id }}">Modifier</a>
-            <a style="background-color: #d8363a; color: white; padding: 7px" href="/auteur/delete/{{ article.id }}">Supprimer</a>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {% if article.idUser.id == user.id %}
+                    <a style="background-color: #B2996B; color: white; padding: 7px" href="/auteur/update/{{ article.id }}">Modifier</a>
+                    <a style="background-color: #d8363a; color: white; padding: 7px" href="/auteur/delete/{{ article.id }}">Supprimer</a>
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <a style="background-color: #d8363a; color: white; padding: 7px" href="/auteur/delete/{{ article.id }}">Supprimer</a>
+                {% endif %}
+            {% endif %}
             <div class="pt-2">
                 <span class="text-sm text-gray-400 font-medium fa fa-user"> {{ article.idUser.pseudo }} •</span>
                 <span class="text-sm text-gray-400 font-medium"> {{ article.creationDate|date("m/d/Y") }}•</span>
@@ -31,10 +37,18 @@
                     </div>
                 </div>
                 <div class="text-xs mb-2 cursor-pointer font-medium fas fa-comment-alt fa fa-envelope"> {{ article.commentaires|length}} commentaires</div>
+                <br>
                 {% for commentaires in commentaire %}
+                    {% if commentaires.deleted == 0 %}
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {% if is_granted('ROLE_AUTEUR') or commentaires.idUser.id == user.id %}
+                            <a style="background-color: #d8363a; color: white; padding: 7px" href="{{ path('app_deletecomment', {'id' : article.id, 'commentid': commentaires.id }) }}">Supprimer</a>
+                        {% endif %}
+                    {% endif %}
                     <p class="text-gray-500">Rédigé par {{ commentaires.idUser.pseudo }}, le {{ commentaires.creationDate|date("m/d/Y H:i:s") }}</p>
                     <p class="text-sm mt-2">{{ commentaires.content }}</p>
                     <hr class="my-2">
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

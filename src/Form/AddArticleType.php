@@ -21,7 +21,6 @@ class AddArticleType extends AbstractType
             ->add('title')
             ->add('description', TextareaType::class, [
                 'label' => 'Contenu',
-                'data' => '',
             ])
             ->add('imageFile', FileType::class, [
                 'label' => 'Entrer l\'image : ',
