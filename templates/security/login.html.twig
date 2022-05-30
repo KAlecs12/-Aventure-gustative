@@ -1,26 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log In!{% endblock %}
+{% block title %}Aventures Gustative | Connexion{% endblock %}
 
 {% block body %}
-    <section class="h-full gradient-form bg-gray-200 md:h-screen">
-        <div class=" py-12 px-6 h-full ">
-            <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-                <div class="xl:w-10/12">
-                    <div class="block bg-white shadow-lg rounded-lg">
-                        <div class="lg:flex lg:flex-wrap g-0">
+    <section class="h-full md:h-screen">
+        <div class="px-6 h-full">
+            <div class="g-6">
+                <div class="xl:w-screen">
+                    <div class="bg-white rounded-lg">
+                        <div class="lg:flex justify-center lg:flex-wrap g-0 m-auto">
                             <div class="lg:w-6/12 px-4 md:px-0">
                                 <div class="md:p-12 md:mx-6">
                                     <div class="text-center">
-                                        <img
-                                                class="mx-auto w-48"
-                                                src="{{ asset('imgs/logo.png')}}"
-                                                alt="logo"
-                                        />
-                                        <h4 class="text-xl font-semibold mt-1 mb-12 pb-1">We are The Lotus Team</h4>
+                                        <h4 class="text-xl font-semibold mt-1 mb-12 pb-1">Bienvenue !</h4>
                                     </div>
-                                    <form method="post" >
-                                        <p class="mb-4">Please login to your account</p>
+                                    <form method="post">
+                                        <p class="mb-4">Merci de vous connecter à votre compte !</p>
 
                                         {% if error %}
                                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -43,14 +38,14 @@
                                                     name="password"
                                                     id="inputPassword"
                                                     class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                                    placeholder="Password"
+                                                    placeholder="Mot de passe"
                                                     required
                                             />
                                         </div>
 
                                         <div class="form-check mb-3">
                                             <label>
-                                                <input type="checkbox" name="_remember_me" class="form-check-input"> Remember me
+                                                <input type="checkbox" name="_remember_me" class="form-check-input"> Se souvenir de moi
                                             </label>
                                         </div>
                                         <input type="hidden" name="_csrf_token"
@@ -59,26 +54,15 @@
 
                                         <div class="text-center pt-1 mb-12 pb-1">
                                             <button
-                                                    class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                                                    class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-button-green hover:bg-green-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                                                     type="submit"
-                                                    data-mdb-ripple="true"
-                                                    data-mdb-ripple-color="light"
-                                                    style="
-                        background: linear-gradient(
-                          to right,
-                          #ee7724,
-                          #d8363a,
-                          #dd3675,
-                          #b44593
-                        );
-                      "
                                             >
-                                                Log in
+                                                Se connecter
                                             </button>
                                         </div>
 
                                         <div class="flex items-center justify-between pb-6">
-                                            <a href="{{ path('app_register') }}" class="mb-0 mr-2">Don't have an account?</a>
+                                            <a href="{{ path('app_register') }}" class="mb-0 mr-2">Vous n'avez pas de compte ?</a>
                                             <a
                                                     type="button"
                                                     href="{{ path('app_home') }}"
@@ -90,24 +74,6 @@
                                             </a>
                                         </div>
                                     </form>
-                                </div>
-                            </div>
-
-
-                            <div
-                                    class="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none"
-                                    style="
-                background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-              "
-                            >
-                                <div class="text-white px-4 py-6 md:p-12 md:mx-6">
-                                    <h4 class="text-xl font-semibold mb-6">We are more than just a company</h4>
-                                    <p class="text-sm">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
                                 </div>
                             </div>
                         </div>
