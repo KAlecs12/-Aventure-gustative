@@ -103,9 +103,10 @@
 {#                                        </div>#}
 
                                         {{ form_start(registrationForm) }}
-
-                                        {{ form_row(registrationForm.pseudo) }}
-                                        {{ form_row(registrationForm.firstName) }}
+                                        <div class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                                            {{ form_row(registrationForm.pseudo) }}
+                                        </div>
+                                        {{ form_row(registrationForm.firstName, {'attr': {'class': { "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"}}} }}
                                         {{ form_row(registrationForm.lastName) }}
                                         {{ form_row(registrationForm.email) }}
                                         {{ form_row(registrationForm.plainPassword, {

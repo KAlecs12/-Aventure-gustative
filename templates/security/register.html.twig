@@ -4,22 +4,39 @@
 
 {% block body %}
 
-    <div class="container">
-        <div class="row">
-            <div class="bg-light mt-4 p-4">
-                <h1>Enregistrement</h1>
+    <section class="h-full md:h-screen">
+        <div class="px-6 h-full">
+            <div class="g-6">
+                <div class="xl:w-screen">
+                    <div class="bg-white rounded-lg">
+                        <div class="lg:flex justify-center lg:flex-wrap g-0 m-auto">
+                            <div class="lg:w-6/12 px-4 md:px-0">
+                                <div class="md:p-12 md:mx-6">
+                                    <div class="text-center">
+                                        <h4 class="text-xl font-semibold mt-1 mb-12 pb-1">Bienvenue !</h4>
+                                    </div>
+                                    {{ form_start(registrationForm) }}
+                                    {{ form_row(registrationForm.pseudo, {'attr': {'placeholder': 'Pseudonyme'}}) }}
+                                    {{ form_row(registrationForm.firstName, {'attr': {'placeholder': 'Nom de famille'}}) }}
+                                    {{ form_row(registrationForm.lastName, {'attr': {'placeholder': 'Prénom'}}) }}
+                                    {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Adresse mail'}}) }}
+                                    {{ form_row(registrationForm.plainPassword, {
+                                        label: ''
+                                    }) }}l
+                                </div>
 
-                {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
-                }) }}
-                {{ form_row(registrationForm.agreeTerms) }}
-
-                <button type="submit" class="btn">Register</button>
-                {{ form_end(registrationForm) }}
-                <h2><a href="{{ path('app_home') }}">Go back</a></h2>
+                                <button type="submit" class="btn">Register</button>
+                                {{ form_end(registrationForm) }}
+                                <h2><a href="{{ path('app_home') }}">Go back</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </section>
 {% endblock %}
