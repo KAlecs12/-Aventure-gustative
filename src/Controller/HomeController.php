@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/')]
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
@@ -66,6 +67,11 @@ class HomeController extends AbstractController
     #[Route('/recettes/{id}/details', name: 'app_recettes_details')]
     public function recettesDetails($id, Request $request, EntityManagerInterface $entityManager): Response
     {
+        // On recupere les info de l'id selectionner pour l'afficher sur la page voulu
+        $articles = $entityManager
+            ->getRepository(Article::class)
+            ->find($id);
+
         // Les trois dernieres recettes
         $threelast = $entityManager
             ->getRepository(Article::class)
@@ -76,20 +82,17 @@ class HomeController extends AbstractController
             ->getRepository(Commentaires::class)
             ->findBy(array('idArticle' => $id));
 
-
         // On envoie le formulaire pour écrire un commentaire
             $commentaires = new Commentaires();
             $form = $this->createForm(CommentaireType::class, $commentaires);
             $form->handleRequest($request);
 
-            $articles = $entityManager
-                ->getRepository(Article::class)
-                ->find($id);
         if ($this->getUser() != null) {
 
             $commentaires->setIdArticle($articles);
             $commentaires->setIdUser($this->getUser());
             $commentaires->setCreationDate(new \DateTime());
+            $commentaires->setDeleted(0);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager->persist($commentaires);

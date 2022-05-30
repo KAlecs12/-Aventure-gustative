@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="w-1/3 m-auto">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="rounded border w-full bg-white mx-3 md:mx-0 lg:mx-0">
+            {{ form_start(form) }}
+            {{ form_row(form.content) }}
+            <br>
+            {{ form_row(form.ask_promote) }}
+            <br>
+            <button type="submit">Demander</button>
+            {{ form_end(form) }}
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/bruno/Desktop/framework/-Aventure-gustative/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/bruno/Desktop/framework/-Aventure-gustative/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
-</div>
+    </div>
 {% endblock %}

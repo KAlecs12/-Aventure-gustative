@@ -8,19 +8,15 @@
 {% block body %}
 
 
-    <!-- Section posts -->
     <div class="w-1/3 m-auto">
+
         <div class="rounded border w-full bg-white mx-3 md:mx-0 lg:mx-0">
             {{ form_start(form) }}
-                {{ form_row(form.title) }}
-            <br>
-                {{ form_row(form.description) }}
-            <br>
-                {{ form_row(form.imageFile) }}
-            <br>
-                {{ form_row(form.categorie) }}
-            <br>
-            <button type="submit">Ajouter</button>
+            {{ form_row(form.title) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.imageFile) }}
+            {{ form_row(form.categorie) }}
+            <button type="submit">Modifier</button>
             {{ form_end(form) }}
         </div>
 

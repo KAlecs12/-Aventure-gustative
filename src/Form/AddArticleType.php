@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Article;
-use App\Entity\Cheval;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

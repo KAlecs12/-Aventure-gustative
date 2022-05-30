@@ -4,8 +4,8 @@
 
 {% block body %}
 
-    <section class="h-full md:h-screen">
-        <div class="px-6 h-full">
+    <section class="h-screen">
+        <div class="px-6">
             <div class="g-6">
                 <div class="xl:w-screen">
                     <div class="bg-white rounded-lg">
@@ -16,27 +16,38 @@
                                         <h4 class="text-xl font-semibold mt-1 mb-12 pb-1">Bienvenue !</h4>
                                     </div>
                                     {{ form_start(registrationForm) }}
-                                    {{ form_row(registrationForm.pseudo, {'attr': {'placeholder': 'Pseudonyme'}}) }}
-                                    {{ form_row(registrationForm.firstName, {'attr': {'placeholder': 'Nom de famille'}}) }}
-                                    {{ form_row(registrationForm.lastName, {'attr': {'placeholder': 'Prénom'}}) }}
-                                    {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Adresse mail'}}) }}
-                                    {{ form_row(registrationForm.plainPassword, {
-                                        label: ''
-                                    }) }}l
+                                    {{ form_row(registrationForm.pseudo, {'attr': {'placeholder': 'Pseudonyme', 'class': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                    <br>
+                                    {{ form_row(registrationForm.firstName, {'attr': {'placeholder': 'Nom de famille', 'class': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                    <br>
+                                    {{ form_row(registrationForm.lastName, {'attr': {'placeholder': 'Prénom', 'class': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                    <br>
+                                    {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Adresse mail',  'class': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                    <br>
+                                    {{ form_row(registrationForm.plainPassword, {'attr': {'placeholder': 'Mot de passe', 'class': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                    <br>
+                                    {{ form_row(registrationForm.agreeTerms) }}
+                                    <br>
+                                    <button type="submit" class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-button-green hover:bg-green-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3">S'enregister</button>
                                 </div>
-
-                                <button type="submit" class="btn">Register</button>
                                 {{ form_end(registrationForm) }}
-                                <h2><a href="{{ path('app_home') }}">Go back</a></h2>
+                                <div class="flex items-center justify-between pb-6">
+                                    <a href="{{ path('app_login') }}" class="mb-0 mr-2">Vous avez pas de compte ?</a>
+                                    <a
+                                            type="button"
+                                            href="{{ path('app_home') }}"
+                                            class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                                            data-mdb-ripple="true"
+                                            data-mdb-ripple-color="light"
+                                    >
+                                        Retour
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
         </div>
     </section>
 {% endblock %}

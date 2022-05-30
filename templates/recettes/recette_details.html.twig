@@ -10,6 +10,8 @@
     <!-- Section posts -->
     <div class="w-1/3 m-auto">
         <div class="rounded border w-full bg-white mx-3 md:mx-0 lg:mx-0">
+            <a style="background-color: #B2996B; color: white; padding: 7px" href="/auteur/update/{{ article.id }}">Modifier</a>
+            <a style="background-color: #d8363a; color: white; padding: 7px" href="/auteur/delete/{{ article.id }}">Supprimer</a>
             <div class="pt-2">
                 <span class="text-sm text-gray-400 font-medium fa fa-user"> {{ article.idUser.pseudo }} •</span>
                 <span class="text-sm text-gray-400 font-medium"> {{ article.creationDate|date("m/d/Y") }}•</span>
@@ -20,14 +22,12 @@
 
             </div>
 
-            <img class="max-h-screen bg-cover" src="{{ asset('imgs/bruschetta.jpg')}}">
+            <img class="max-h-screen bg-cover" src="{{ asset(article.imageFile)}}">
             <div class="px-3 pb-2">
                 <div class="pt-1">
                     <div class="my-6 text-sm">
                         <p>{{ article.description}}</p>
-
                         <hr class="mt-2">
-
                     </div>
                 </div>
                 <div class="text-xs mb-2 cursor-pointer font-medium fas fa-comment-alt fa fa-envelope"> {{ article.commentaires|length}} commentaires</div>
@@ -60,7 +60,7 @@
         <div class=" flex justify-between">
             {% for article in threelast %}
                 <div class="mr-3">
-                    <img class="w-full bg-cover" src="{{ asset('imgs/bruschetta.jpg')}}">
+                    <img class="w-full bg-cover" src="{{ asset(article.imageFile)}}">
                     <div class="px-3 pb-2">
                         <div class="pt-1">
                             <div class="mb-2 text-sm">
