@@ -27,16 +27,19 @@
                 </thead>
                 <tbody>
             {% for article in articles|reverse %}
-                <tr class="border-collapse border">
-                    <th class=" text-center border">{{ article.id }}</th>
-                    <td class="pl-2 border">{{ article.title }}</td>
-                    <td class="pl-2 border">{{ article.categorie }}</td>
+                <form>
+                    <tr class="border-collapse border">
+                        <th class=" text-center border">{{ article.id }}</th>
+                        <td class="pl-2 border">{{ article.title }}</td>
+                        <td class="pl-2 border">{{ article.categorie }}</td>
 
-                    <td class="border pt-3 pb-3 pl-4 pr-4">
-                        <a style="background-color: #B2996B; color: white; padding: 7px" href="#">Modifier</a>
-                        <a style="background-color: #d8363a; color: white; padding: 7px" href="#">Supprimer</a>
-                    </td>
-                </tr>
+                        <td class="border pt-3 pb-3 pl-4 pr-4">
+                            <a style="background-color: #B2996B; color: white; padding: 7px" href="/update/{{ article.id }}">Modifier</a>
+                            <a style="background-color: #d8363a; color: white; padding: 7px" href="/delete/{{ article.id }}">Supprimer</a>
+                        </td>
+                    </tr>
+                </form>
+
             {% endfor %}
                 </tbody>
             </table>

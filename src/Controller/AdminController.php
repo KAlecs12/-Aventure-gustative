@@ -20,7 +20,7 @@ class AdminController extends AbstractController
     {
         $articles = $entityManager
             ->getRepository(Article::class)
-            ->findAll();
+            ->findBy(array('deleted' => 0));
 
 
         return $this->renderForm('admin/admin.html.twig', [
@@ -45,7 +45,7 @@ class AdminController extends AbstractController
             if ($uploadedFile) {
 
                 $uploadedFileName = $fileUploader->upload($uploadedFile);
-                $article->setImageFile('/public/uploads/' . $uploadedFileName);
+                $article->setImageFile('/uploads/' . $uploadedFileName);
                 $article->setCreationDate(new \DateTime());
                 $article->setIdUser($this->getUser());
                 $entityManager->persist($article);
@@ -57,4 +57,33 @@ class AdminController extends AbstractController
             'form' => $form
         ]);
     }
+
+    #[Route('/delete/{id}', name: 'app_delete')]
+    public function delete($id,EntityManagerInterface $entityManager): Response
+    {
+
+        $articles = $entityManager
+            ->getRepository(Article::class)
+            ->find($id);
+
+        $articles->setDeleted(1);
+        $entityManager->persist($articles);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_admin');
+    }
+
+//    #[Route('/update/{id}', name: 'app_update')]
+//    public function update($id,EntityManagerInterface $entityManager): Response
+//    {
+//
+//        $articles = $entityManager
+//            ->getRepository(Article::class)
+//            ->find($id);
+//
+//        $articles->setDeleted(1);
+//        $entityManager->persist($articles);
+//        $entityManager->flush();
+//        return $this->redirectToRoute('app_admin');
+//    }
+
 }

@@ -25,13 +25,11 @@ class HomeController extends AbstractController
     {
         $articles = $entityManager
             ->getRepository(Article::class)
-            ->findAll();
+            ->findBy(array('deleted' => 0));
 
         $lastarticle = $entityManager
             ->getRepository(Article::class)
-            ->findBy(array(), array('id' => 'desc'),1,0);
-
-
+            ->findBy(array('deleted' => 0), array('id' => 'desc'),1,0);
 
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
@@ -71,7 +69,7 @@ class HomeController extends AbstractController
         // Les trois dernieres recettes
         $threelast = $entityManager
             ->getRepository(Article::class)
-            ->findBy(array(), array('id' => 'desc'),3,0);
+            ->findBy(array('deleted' => 0), array('id' => 'desc'),3,0);
 
         // On recupere tous les commentaires de l'article
         $commentaire = $entityManager
