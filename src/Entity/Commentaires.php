@@ -37,6 +37,11 @@ class Commentaires
      */
     private $idArticle;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $deleted;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Commentaires
     public function setIdArticle(?article $idArticle): self
     {
         $this->idArticle = $idArticle;
+
+        return $this;
+    }
+
+    public function getDeleted(): ?bool
+    {
+        return $this->deleted;
+    }
+
+    public function setDeleted(bool $deleted): self
+    {
+        $this->deleted = $deleted;
 
         return $this;
     }

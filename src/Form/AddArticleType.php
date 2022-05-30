@@ -50,8 +50,11 @@ class AddArticleType extends AbstractType
             ->add('categorie', ChoiceType::class, [
                 'label' => 'Catégorie : ',
                 'choices'=> [
-                    'Professionel'=> 'pro',
-                    'Installation'=> 'installation'
+                    'Plat'=> 'Plat',
+                    'Pâtisserie'=> 'Pâtisserie',
+                    'Apéritif' => 'Apéritif',
+                    'Entrée' => 'Entrée',
+                    'Dessert' => 'Dessert'
                 ]
             ]);
     }
