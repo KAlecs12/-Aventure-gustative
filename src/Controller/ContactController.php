@@ -37,4 +37,19 @@ class ContactController extends AbstractController
             'form' => $form
         ]);
     }
+
+    #[Route('/contact/delete/{id}', name: 'app_deletemsg')]
+    public function deletemsg($id,EntityManagerInterface $entityManager): Response
+    {
+
+        $contact = $entityManager
+            ->getRepository(Contact::class)
+            ->find($id);
+
+        $contact->setDeleted(1);
+        $entityManager->persist($contact);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_admincontact');
+    }
+
 }

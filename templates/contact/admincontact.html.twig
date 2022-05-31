@@ -40,7 +40,7 @@
                                 {% if contact.askPromote == 1 and contact.idUser.roles[0] != "ROLE_ADMIN" and contact.idUser.roles[0] != "ROLE_AUTEUR" %}
                                     <a style="background-color: #B2996B; color: white; padding: 7px" href="{{ path('app_promote', {'id' : contact.idUser.id }) }}">Promote</a>
                                 {% endif %}
-                                <a style="background-color: #d8363a; color: white; padding: 7px" href="#">Supprimer</a>
+                                <a style="background-color: #d8363a; color: white; padding: 7px" href="{{ path('app_deletemsg', {'id' : contact.id }) }}">Supprimer</a>
                             </td>
                         </tr>
                     </form>
