@@ -23,6 +23,7 @@
                     <th class=" border p-3">Id</th>
                     <th class="border pl-56 pr-56">Titre</th>
                     <th class="border">Catégorie</th>
+                    <th class="border">Utilisateur</th>
                     <th class="border pl-20 pr-16">Actions</th>
                 </tr>
                 </thead>
@@ -32,7 +33,8 @@
                     <tr class="border-collapse border">
                         <th class=" text-center border">{{ article.id }}</th>
                         <td class="pl-2 border">{{ article.title }}</td>
-                        <td class="pl-2 border">{{ article.categorie }}</td>
+                        <td class=" border pl-8 pr-8 ">{{ article.categorie }}</td>
+                        <td class="text-center pl-8 pr-8 border">{{ article.idUser.pseudo }}</td>
 
                         <td class="border pt-3 pb-3 pl-4 pr-4">
                             <a style="background-color: #B2996B; color: white; padding: 7px" href="/auteur/update/{{ article.id }}">Modifier</a>
